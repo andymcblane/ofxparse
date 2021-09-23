@@ -120,15 +120,8 @@ class OfxFile(object):
             self.fh = codecs.lookup('ascii').streamreader(self.fh)
             return
 
-        if enc_type == "USASCII":
-            cp = ascii_headers.get("CHARSET", "1252")
-            if cp == "8859-1":
-                encoding = "iso-8859-1"
-            else:
-                encoding = "cp%s" % (cp, )
 
-        elif enc_type in ("UNICODE", "UTF-8"):
-            encoding = "utf-8"
+        encoding = "utf-8"
 
         codec = codecs.lookup(encoding)
 
